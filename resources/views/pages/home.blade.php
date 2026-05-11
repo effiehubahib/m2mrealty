@@ -1,128 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>m2m Realty &amp; Brokerage — Luxury Living</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    body { font-family: 'Inter', system-ui, sans-serif; }
-    /* Hide scrollbar on horizontal scrollers */
-    .no-scrollbar::-webkit-scrollbar { display: none; }
-    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-  </style>
-</head>
-<body class="bg-slate-50 text-slate-800">
+@extends('layouts.app')
+@section('content')
+<!-- ============ HERO ============ -->
+ <section class="relative">
+  <div class="relative h-[560px] sm:h-[600px] w-full overflow-hidden">
+    <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=2000&q=80"
+         alt="Modern luxury home at dusk"
+         class="absolute inset-0 w-full h-full object-cover" />
 
-  <!-- ============ HEADER ============ -->
-  <header class="w-full bg-white border-b border-slate-200 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
-        <a href="#" class="flex items-center gap-2 shrink-0" aria-label="m2m Realty & Brokerage Home">
-          <svg class="h-9 w-9 text-cyan-500" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M5 22 L20 9 L35 22 L35 34 L26 34 L26 26 L20 21 L14 26 L14 34 L5 34 Z"
-                  stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" fill="none"/>
-            <text x="20" y="32" text-anchor="middle" font-family="Inter, sans-serif"
-                  font-size="9" font-weight="800" fill="currentColor">m2m</text>
-          </svg>
-          <span class="text-cyan-500 font-bold text-lg sm:text-xl tracking-[0.18em]">REALTY&amp;BROKERAGE</span>
-        </a>
+    <!-- Gradient overlay -->
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.65) 100%);"></div>
 
-        <nav class="hidden lg:flex items-center gap-8" aria-label="Primary">
-          <a href="#" class="relative text-cyan-500 font-medium text-[15px] pb-1
-                             after:content-[''] after:absolute after:left-0 after:right-0 after:-bottom-0.5
-                             after:h-0.5 after:bg-cyan-500 after:rounded-full" aria-current="page">Properties</a>
-          <a href="#" class="text-slate-700 hover:text-cyan-500 font-medium text-[15px] transition-colors">Agents</a>
-          <a href="#" class="text-slate-700 hover:text-cyan-500 font-medium text-[15px] transition-colors">Developments</a>
-          <a href="#" class="text-slate-700 hover:text-cyan-500 font-medium text-[15px] transition-colors">About</a>
-          <a href="#" class="text-slate-700 hover:text-cyan-500 font-medium text-[15px] transition-colors">Contact</a>
-        </nav>
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8 h-full flex items-center">
+      <div class="max-w-4xl text-white">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
+          Redefining the Standard of Luxury Living
+        </h1>
+        <p class="mt-5 text-base xl:text-lg text-slate-200 max-w-2xl leading-relaxed font-light">
+          Discover an exclusive collection of prestigious estates and contemporary
+          architectural masterpieces across the globe's most coveted locations.
+        </p>
 
-        <div class="flex items-center gap-3 sm:gap-5">
-          <button type="button" aria-label="Saved properties" class="p-2 text-slate-600 hover:text-cyan-500 transition-colors">
-            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-            </svg>
-          </button>
-          <button type="button" aria-label="Notifications" class="relative p-2 text-slate-600 hover:text-cyan-500 transition-colors">
-            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-              <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
-            </svg>
-          </button>
-          <a href="#" class="hidden sm:inline-flex items-center justify-center bg-cyan-500 hover:bg-cyan-600 text-white font-medium text-[15px] px-5 py-2.5 rounded-md shadow-sm transition-colors">List Property</a>
-          <button type="button" aria-label="Open menu" class="lg:hidden p-2 text-slate-700 hover:text-cyan-500 transition-colors">
-            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </header>
+        <!-- Search panel -->
+        <div class="mt-8 bg-white rounded-xl shadow-2xl p-3 sm:p-4 flex flex-col md:flex-row gap-3 md:items-center">
 
-  <!-- ============ HERO ============ -->
-  <section class="relative">
-    <div class="relative h-[560px] sm:h-[600px] w-full overflow-hidden">
-      <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=2000&q=80"
-           alt="Modern luxury home at dusk"
-           class="absolute inset-0 w-full h-full object-cover" />
-      <!-- gradient overlay for text legibility -->
-      <div class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/35 to-transparent"></div>
-
-      <div class="relative max-w-7xl mx-auto px-6 lg:px-8 h-full flex items-center">
-        <div class="max-w-2xl text-white">
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
-            Redefining the Standard of Luxury Living
-          </h1>
-          <p class="mt-5 text-base sm:text-lg text-slate-200 max-w-xl leading-relaxed">
-            Discover an exclusive collection of prestigious estates and contemporary
-            architectural masterpieces across the globe's most coveted locations.
-          </p>
-
-          <!-- Search panel -->
-          <div class="mt-8 bg-white rounded-xl shadow-2xl p-3 sm:p-4 flex flex-col md:flex-row gap-3 md:items-center">
-            <!-- Buy/Rent toggle -->
-            <div class="inline-flex bg-slate-100 rounded-lg p-1 self-start md:self-auto" role="tablist" aria-label="Listing type">
-              <button type="button" role="tab" aria-selected="true"
-                      class="px-4 py-2 rounded-md bg-cyan-500 text-white text-sm font-medium shadow-sm">Buy</button>
-              <button type="button" role="tab" aria-selected="false"
-                      class="px-4 py-2 rounded-md text-slate-600 hover:text-slate-800 text-sm font-medium">Rent</button>
-            </div>
-
-            <!-- Location input -->
-            <div class="flex-1 flex items-center gap-2 px-3 border-l border-slate-200">
-              <svg class="h-5 w-5 text-slate-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              <input type="text" placeholder="Enter location, area or building"
-                     class="w-full bg-transparent outline-none text-slate-700 placeholder:text-slate-400 text-sm py-2"/>
-            </div>
-
-            <!-- Property type select -->
-            <div class="flex items-center gap-2 px-3 border-l border-slate-200 md:min-w-[180px]">
-              <select class="w-full bg-transparent outline-none text-slate-700 text-sm py-2 cursor-pointer appearance-none">
-                <option>Property Type</option>
-                <option>Villa</option>
-                <option>Apartment</option>
-                <option>Penthouse</option>
-                <option>Estate</option>
-              </select>
-              <svg class="h-4 w-4 text-slate-400 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </div>
-
-            <!-- Search button -->
-            <button type="button" class="inline-flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white font-medium text-sm px-6 py-3 rounded-lg transition-colors">
-              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              Search
-            </button>
+          <!-- Buy/Rent toggle -->
+          <div class="inline-flex bg-slate-100 rounded-lg p-1 shrink-0 self-start md:self-auto" role="tablist" aria-label="Listing type">
+            <button type="button" role="tab" aria-selected="true"
+                    class="px-4 py-2 rounded-md bg-cyan-500 text-white text-sm font-medium shadow-sm">Buy</button>
+            <button type="button" role="tab" aria-selected="false"
+                    class="px-4 py-2 rounded-md text-slate-600 hover:text-slate-800 text-sm font-medium">Rent</button>
           </div>
+
+          <!-- Location input -->
+          <div class="flex-1 min-w-0 flex items-center gap-2 px-3 md:border-l border-slate-200">
+            <svg class="h-5 w-5 text-slate-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <input type="text" placeholder="Enter location, area or building"
+                   class="w-full min-w-0 bg-transparent outline-none text-slate-700 placeholder:text-slate-400 text-sm py-2"/>
+          </div>
+
+          <!-- Property type select -->
+          <div class="relative flex items-center px-3 md:border-l border-slate-200 w-full md:w-[180px]">
+
+              <select class="w-full bg-transparent outline-none text-slate-700 text-sm py-2 cursor-pointer appearance-none pr-8">
+                  <option>Property Type</option>
+                  <option>Villa</option>
+                  <option>Apartment</option>
+                  <option>Penthouse</option>
+                  <option>Estate</option>
+              </select>
+              <svg class="absolute right-3 h-4 w-4 text-slate-400 pointer-events-none"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"/>
+              </svg>
+          </div>
+
+          <!-- Search button -->
+          <button type="button" class="shrink-0 inline-flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white font-medium text-sm px-6 py-3 rounded-lg transition-colors">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            Search
+          </button>
+
         </div>
       </div>
     </div>
-  </section>
-
+  </div>
+</section>
   <!-- ============ FEATURED LISTINGS ============ -->
   <section class="bg-slate-50 py-16">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
@@ -149,7 +102,7 @@
             </button>
           </div>
           <div class="p-5">
-            <p class="text-cyan-500 text-2xl font-bold">$8,450,000</p>
+            <p class="text-cyan-500 text-2xl font-bold">₱8,450,000</p>
             <h3 class="mt-1 text-lg font-semibold text-slate-900">Skyline Penthouse</h3>
             <p class="mt-1 flex items-center gap-1 text-sm text-slate-500">
               <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -173,7 +126,7 @@
             </button>
           </div>
           <div class="p-5">
-            <p class="text-cyan-500 text-2xl font-bold">$12,000,000</p>
+            <p class="text-cyan-500 text-2xl font-bold">₱12,000,000</p>
             <h3 class="mt-1 text-lg font-semibold text-slate-900">Azure Waterfront Estate</h3>
             <p class="mt-1 flex items-center gap-1 text-sm text-slate-500">
               <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -197,7 +150,7 @@
             </button>
           </div>
           <div class="p-5">
-            <p class="text-cyan-500 text-2xl font-bold">$4,250,000</p>
+            <p class="text-cyan-500 text-2xl font-bold">₱4,250,000</p>
             <h3 class="mt-1 text-lg font-semibold text-slate-900">Oakwood Modern Retreat</h3>
             <p class="mt-1 flex items-center gap-1 text-sm text-slate-500">
               <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -358,7 +311,7 @@
             </button>
           </div>
           <div class="p-5">
-            <p class="text-cyan-500 text-2xl font-bold">$8,450,000</p>
+            <p class="text-cyan-500 text-2xl font-bold">₱8,450,000</p>
             <h3 class="mt-1 text-lg font-semibold text-slate-900">Skyline Penthouse</h3>
             <p class="mt-1 flex items-center gap-1 text-sm text-slate-500">
               <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -381,7 +334,7 @@
             </button>
           </div>
           <div class="p-5">
-            <p class="text-cyan-500 text-2xl font-bold">$12,000,000</p>
+            <p class="text-cyan-500 text-2xl font-bold">₱12,000,000</p>
             <h3 class="mt-1 text-lg font-semibold text-slate-900">Azure Waterfront Estate</h3>
             <p class="mt-1 flex items-center gap-1 text-sm text-slate-500">
               <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -404,7 +357,7 @@
             </button>
           </div>
           <div class="p-5">
-            <p class="text-cyan-500 text-2xl font-bold">$4,250,000</p>
+            <p class="text-cyan-500 text-2xl font-bold">₱4,250,000</p>
             <h3 class="mt-1 text-lg font-semibold text-slate-900">Oakwood Modern Retreat</h3>
             <p class="mt-1 flex items-center gap-1 text-sm text-slate-500">
               <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -426,58 +379,7 @@
       </div>
     </div>
   </section>
+  @endsection
 
-  <!-- ============ FOOTER ============ -->
-  <footer class="bg-slate-900 text-slate-300">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-10">
-      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+  
 
-        <!-- Logo + copyright -->
-        <div class="flex flex-col gap-2">
-          <a href="#" class="flex items-center gap-2" aria-label="m2m Realty & Brokerage Home">
-            <svg class="h-8 w-8 text-cyan-500" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M5 22 L20 9 L35 22 L35 34 L26 34 L26 26 L20 21 L14 26 L14 34 L5 34 Z"
-                    stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" fill="none"/>
-              <text x="20" y="32" text-anchor="middle" font-family="Inter, sans-serif"
-                    font-size="9" font-weight="800" fill="currentColor">m2m</text>
-            </svg>
-            <span class="text-cyan-500 font-bold text-base sm:text-lg tracking-[0.18em]">REALTY&amp;BROKERAGE</span>
-          </a>
-          <p class="text-sm text-slate-400">© 2026. M2M Realty &amp; Brokerage. All rights reserved.</p>
-        </div>
-
-        <!-- Link row -->
-        <nav class="flex flex-wrap items-center gap-x-8 gap-y-3" aria-label="Footer">
-          <a href="#" class="text-sm text-slate-200 hover:text-cyan-400 transition-colors">Privacy Policy</a>
-          <a href="#" class="text-sm text-slate-200 hover:text-cyan-400 transition-colors">Terms of Service</a>
-          <a href="#" class="text-sm text-slate-200 hover:text-cyan-400 transition-colors">Market Reports</a>
-          <a href="#" class="text-sm text-slate-200 hover:text-cyan-400 transition-colors">Sitemap</a>
-          <a href="#" class="text-sm text-slate-200 hover:text-cyan-400 transition-colors">Affiliates</a>
-        </nav>
-
-        <!-- Icons -->
-        <div class="flex items-center gap-5 text-slate-300">
-          <button type="button" aria-label="Share" class="hover:text-cyan-400 transition-colors">
-            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="18" cy="5" r="3"/>
-              <circle cx="6" cy="12" r="3"/>
-              <circle cx="18" cy="19" r="3"/>
-              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
-              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
-            </svg>
-          </button>
-          <button type="button" aria-label="Language / Region" class="hover:text-cyan-400 transition-colors">
-            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="2" y1="12" x2="22" y2="12"/>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-            </svg>
-          </button>
-        </div>
-
-      </div>
-    </div>
-  </footer>
-
-</body>
-</html>
