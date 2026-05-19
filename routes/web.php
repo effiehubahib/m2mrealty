@@ -44,10 +44,24 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::POST('downloadables/store', [DownloadableController::class, 'store'])->name('downloadable.store');
     Route::DELETE('downloadable/{id}/destroy', [DownloadableController::class, 'destroy'])->name('downloadable.destroy');
 
-    
+    //Downloadable
+    Route::GET('developers', [DeveloperController::class, 'index'])->name('developers.index');
+    Route::GET('developer/{id}/edit', [DeveloperController::class, 'edit'])->name('developer.edit');
+    Route::GET('developer/{id}/show', [DeveloperController::class, 'show'])->name('developer.show');
+    Route::PATCH('developer/{id}/update', [DeveloperController::class, 'update'])->name('developer.update');
+    Route::POST('developer/store', [DeveloperController::class, 'store'])->name('developer.store');
+    Route::DELETE('developer/{id}/destroy', [DeveloperController::class, 'destroy'])->name('developer.destroy');
 
-    Route::get('/developers', [DeveloperController::class, 'index'])->name('developers.index');
-    Route::get('/properties', [ListingController::class, 'properties'])->name('properties');
+
+    //Listings
+    Route::GET('/listings', [ListingController::class, 'index'])->name('listings.index');
+    Route::GET('listing/{id}/edit', [ListingController::class, 'edit'])->name('listing.edit');
+    Route::GET('listing/{id}/show', [ListingController::class, 'show'])->name('listing.show');
+    Route::PATCH('listing/{id}/update', [ListingController::class, 'update'])->name('listing.update');
+    Route::POST('listing/store', [ListingController::class, 'store'])->name('listing.store');
+    Route::DELETE('listing/{id}/destroy', [ListingController::class, 'destroy'])->name('listing.destroy');
+
+
     Route::get('/agents', [AgentController::class, 'agents'])->name('agents.index');
     Route::get('/dashboard', function () {
         return view('dashboard');

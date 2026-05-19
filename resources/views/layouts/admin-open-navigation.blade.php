@@ -55,7 +55,7 @@
                 </a>
             </li>
             <li class="item py-[11px] text-bgray-900 dark:text-bgray-50">
-                <a href="{{route('downloadables.index')}}">
+                <a href="{{route('listings.index')}}">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-2.5">
                             <span class="item-ico">
@@ -69,7 +69,7 @@
                 </a>
             </li>
             <li class="item py-[11px] text-bgray-900 dark:text-bgray-50">
-                <a href="{{route('downloadables.index')}}">
+                <a href="{{route('developers.index')}}">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-2.5">
                             <span class="item-ico">
