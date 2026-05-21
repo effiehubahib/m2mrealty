@@ -16,7 +16,7 @@
 
           @php
             $navLinks = [
-              ['route' => 'properties',   'label' => 'Properties'],
+              ['route' => 'listings.index',   'label' => 'Properties'],
               ['route' => 'developers.index',  'label' => 'Developers'],
               ['route' => 'about',         'label' => 'About'],
               ['route' => 'contact',       'label' => 'Contact'],

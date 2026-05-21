@@ -39,13 +39,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     //Downloadable
     Route::get('downloadables', [DownloadableController::class, 'index'])->name('downloadables.index');
-    Route::get('downloadable/open-file/{file?}', [DownloadableController::class, 'openFile'])->name('downloadable.open-file');
-    Route::get('downloadable/{id}/edit', [DownloadableController::class, 'index'])->name('downloadable.edit');
+    Route::get('downloadable/{id}/edit', [DownloadableController::class, 'edit'])->name('downloadable.edit');
     Route::POST('downloadables/store', [DownloadableController::class, 'store'])->name('downloadable.store');
+    Route::PATCH('downloadables/{id}/update', [DownloadableController::class, 'update'])->name('downloadable.update');
     Route::DELETE('downloadable/{id}/destroy', [DownloadableController::class, 'destroy'])->name('downloadable.destroy');
+    Route::PATCH('downloadable/{id}/destroy-file', [DownloadableController::class, 'destroyFile'])->name('downloadable.destroy-file');
 
-    //Downloadable
+    //Developer
     Route::GET('developers', [DeveloperController::class, 'index'])->name('developers.index');
+    Route::GET('developer/create', [DeveloperController::class, 'create'])->name('developer.create');
     Route::GET('developer/{id}/edit', [DeveloperController::class, 'edit'])->name('developer.edit');
     Route::GET('developer/{id}/show', [DeveloperController::class, 'show'])->name('developer.show');
     Route::PATCH('developer/{id}/update', [DeveloperController::class, 'update'])->name('developer.update');

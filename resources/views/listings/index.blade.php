@@ -8,7 +8,7 @@
                 <div class="w-full rounded-lg bg-white px-[24px] py-[20px] dark:bg-darkblack-600">
                     <div class="justify-between sm:flex sm:items-center">
                         <div class="sm:flex-auto">
-                            <h1 class="text-base font-semibold text-dgray-900 dark:text-white">Developers</h1>
+                            <h1 class="text-base font-semibold text-dgray-900 dark:text-white">Properties</h1>
                         </div>
                         <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
                             <a href="{{route('developer.create')}}" class="block rounded-md px-3 py-2 text-center text-sm font-semibold text-white shadow-xs bg-branding hover:bg-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Upload new developer</a>
@@ -29,12 +29,12 @@
                                             </tr>
                                         </thead>
                                         <tbody class="divide-y divide-gray-200 dark:divide-white/10 dark:bg-gray-800/50">
-                                            @foreach ($developers as $ctr=>$developer)
+                                            @foreach ($listings as $ctr=>$developer)
                                                 <tr>
                                                     <td style="width: 45px;" scope="col" class="py-1.5 pr-1 pl-1 ">
                                                        <img src="{{ asset('developers/'.$developer->logo) }}"  width="auto" height="70px"/> 
                                                     </td>
-                                                    <td scope="col" class="py-3.5 pr-3 pl-4 text-left text-sm font-semibold dark:text-white">{{$developer->developername}}</td>
+                                                    <td scope="col" class="py-3.5 pr-3 pl-4 text-left text-sm font-semibold dark:text-white">{{$developer->title}}</td>
                                                     <td class="text-center">
                                                         <a href="{{route('developer.edit',['id'=>$developer->id])}}" class="text-indigo-600 hover:text-indigo-900 btn-edit text-sm">Edit</a> 
                                                         | 
@@ -47,7 +47,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                {{ $developers->links() }}
+                                {{ $listings->links() }}
                             </div>
                             <div class="d-print-none hidden mt-8" id="submitRequest">
                                 <div class="float-end">

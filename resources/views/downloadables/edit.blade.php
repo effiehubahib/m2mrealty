@@ -6,35 +6,43 @@
                 <div class="w-full rounded-lg bg-white px-[24px] py-[20px] dark:bg-darkblack-600">
                     <div class="justify-between sm:flex sm:items-center">
                         <div class="sm:flex-auto">
-                            <h1 class="text-base font-semibold text-dgray-900 dark:text-bgray-50">Create New Downloadable</h1>
+                            <h1 class="text-base font-semibold text-dgray-900 dark:text-bgray-50">Edit Downloadable: {{$downloadable->title}}</h1>
                         </div>
                         <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
                             <a href="{{route('downloadables.index')}}" class="block rounded-md px-3 py-2 text-center text-sm font-semibold text-white shadow-xs bg-branding hover:bg-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">View Downloadables</a>
                         </div>
                     </div>
                     <div class="mt-8 flow-root">
-                        {{ html()->form('POST')->route('downloadable.store')->id('create-downloadable-form')->attribute('enctype', 'multipart/form-data')->class('space-y-6')->open() }}    
+                        @if($downloadable->uniquename)
+                        <img src="{{ asset('images/logo/m2m-logo.svg') }}" alt="" class="inline-block size-14 rounded-md outline -outline-offset-1 outline-black/5 dark:outline-white/10" />
+                        {{ html()->form('PATCH')->route('downloadable.destroy-file',$downloadable->id)->id('deleteForm')->class('inline space-y-6')->open() }}
+                            <input type="submit" class="deleteBtn cursor-pointer text-red-600 hover:text-red-900 text-sm" value="Delete File" onclick="return confirm('Are you sure you want to delete file of {{$downloadable->title}} ?')"/>
+                        {{ html()->form()->close() }}
+                        @endif
+                        {{ html()->form('PATCH')->route('downloadable.update',$downloadable->id)->id('update-downloadable-form')->attribute('enctype', 'multipart/form-data')->class('space-y-6')->open() }}    
                            
-                            <div class="border-b border-gray-900/10 pb-12">
+                            <div class="border-b border-gray-900/10 pb-12 mt-8">
                                 <h2 class="text-base/7 font-semibold text-dgray-900 dark:text-bgray-50">Downloadable Information</h2>
-
                                 <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                                      <div class="sm:col-span-12">
+                                        @if(!$downloadable->uniquename)
                                         <label for="title" class="block text-sm/6 font-medium text-dgray-900 dark:text-bgray-50">Upload File</label>
                                         <div class="mt-2">
                                             {!! html()->file('uploadfile', old('uploadfile'))->id('fileUpload')!!}
                                         </div>
+                                        
+                                        @endif
                                     </div>
                                     <div class="sm:col-span-2">
                                         <label for="title" class="block text-sm/6 font-medium text-dgray-900 dark:text-bgray-50">Downloadable Title</label>
                                         <div class="mt-2">
-                                            {!! html()->text('title', old('title'))->placeholder('Title')->class('block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6')->required() !!}
+                                            {!! html()->text('title', old('title',$downloadable->title))->placeholder('Title')->class('block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6')->required() !!}
                                         </div>
                                     </div>
                                     <div class="sm:col-span-2">
                                         <label for="gtin" class="block text-sm/6 font-medium text-dgray-900 dark:text-bgray-50">Description </label>
                                         <div class="mt-2">
-                                            {!! html()->text('description', old('description'))->placeholder('Short Description')->class('block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6') !!}
+                                            {!! html()->text('description', old('description',$downloadable->description))->placeholder('Short Description')->class('block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6') !!}
                                         </div>
                                     </div>
                                 </div>

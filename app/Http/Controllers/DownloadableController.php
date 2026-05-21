@@ -19,8 +19,54 @@ class DownloadableController extends Controller
 
         return view('downloadables.create');
     }
-    public function edit(Request $request){
-        return view('downloadables.edit');
+    public function edit(Request $request, int $id){
+        $downloadable = Downloadable::findOrFail($id);
+        return view('downloadables.edit',compact('downloadable'));
+    }
+    public function update(Request $request, $id){
+        $downloadable = Downloadable::findOrFail($id);
+        if($downloadable){
+            $file = $request->file('uploadfile');
+            $filename = null;
+            $unique_name = null;
+            if ($request->hasFile('uploadfile') && $request->file('uploadfile')->isValid()) {
+                    $destinationPath = storage_path('downloadables'); // upload path
+
+                    if(!File::exists($destinationPath)) {
+                        File::makeDirectory($destinationPath, $mode = 0777, true, true);
+                    }
+
+                    $filename = $file->getClientOriginalName();
+                    $fileExtension = $file->getClientOriginalExtension();
+                    
+                    $unique_name = time() . '.' . bin2hex(random_bytes(4)).'.'.$fileExtension;
+                    
+                    $completeURL = env('APP_URL').DIRECTORY_SEPARATOR.$destinationPath.DIRECTORY_SEPARATOR.$unique_name;
+                    $file->move($destinationPath,$unique_name);
+                    
+                    $downloadable->uniquename = $unique_name;
+                    $downloadable->filename = $filename;
+                    
+            } 
+            $downloadable->title = $request->title;
+            $downloadable->description = $request->description;
+            $downloadable->save();
+            return redirect()->route('downloadables.index')->with('success','Downloadable has been successfully updated.');
+        }else{
+             return redirect()->back()->with('warning','No downloadable found.');
+        }
+    }
+    public function destroyFile(Request $request, $id){
+        $downloadable = Downloadable::findOrFail($id);
+        if($downloadable){
+            $filepath = storage_path('downloadables'.DIRECTORY_SEPARATOR.$downloadable->uniquename);
+                if(File::exists($filepath)){
+                    File::delete($filepath);
+            }
+            $downloadable->uniquename=null;
+            $downloadable->save();
+        }
+        return redirect()->back()->with('success','File successfuly deleted.');
     }
     public function store(Request $request){
         $file = $request->file('uploadfile');

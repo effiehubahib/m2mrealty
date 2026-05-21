@@ -33,14 +33,18 @@
                                         <tbody>
                                             @foreach ($downloadables as $ctr=>$downloadable)
                                                 <tr>
-                                                    <td style="width: 45px;" scope="col" class="py-1.5 pr-1 pl-1 text-left text-sm font-semibold text-gray-900">
+                                                    <td style="width: 45px;" scope="col" class="py-1.5 pr-1 pl-1 text-center text-sm font-semibold text-gray-900">
+                                                        @if($downloadable->uniquename)
                                                         <a href="{{route('downloadable.open-file',['file'=>$downloadable->uniquename])}}" target="_blank"> <img src="{{ asset('images/logo/m2m-logo.svg') }}"  width="auto" height="70px"/> 
+                                                        @else
+                                                            <a href="{{route('downloadable.edit',$downloadable->id)}}" class="text-indigo-600 hover:text-indigo-900 btn-edit text-sm">No File</a>
+                                                        @endif
                                                     </td>
                                                     <td scope="col" class="py-3.5 pr-3 pl-4 text-left text-sm font-semibold text-gray-900">{{$downloadable->title}}</td>
                                                     <td scope="col" class="py-3.5 pr-3 pl-4 text-left text-sm font-semibold text-gray-900">{{$downloadable->filename}}</td>
                                                     <td scope="col" class="py-3.5 pr-3 pl-4 text-left text-sm font-semibold text-gray-900">{{$downloadable->description}}</td>                                                
                                                     <td class="text-center">
-                                                        <a href="{{route('downloadable.edit',['id'=>$downloadable->id])}}" class="text-indigo-600 hover:text-indigo-900 btn-edit text-sm">Edit</a> 
+                                                        <a href="{{route('downloadable.edit',$downloadable->id)}}" class="text-indigo-600 hover:text-indigo-900 btn-edit text-sm">Edit</a> 
                                                         | 
                                                         {{ html()->form('DELETE')->route('downloadable.destroy',$downloadable->id)->id('deleteForm')->class('inline space-y-6')->open() }}
                                                             <input type="submit" class="deleteBtn cursor-pointer text-red-600 hover:text-red-900 text-sm" value="Delete" onclick="return confirm('Are you sure you want to delete {{$downloadable->title}} ?')"/>
